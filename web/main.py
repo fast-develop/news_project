@@ -4,6 +4,7 @@ import json
 from pymongo import MongoClient
 from cStringIO import StringIO
 from PIL import Image
+import time
 
 
 class MyMongoClient:
@@ -18,6 +19,10 @@ class MyMongoClient:
     def find_thumb(self,url):
         return self.collection.find({'thumb_url':url})
 
+    def find_doc(self,docid):
+        return self.collection.find({'docid':docid})
+
+
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -28,11 +33,16 @@ class MainHandler(tornado.web.RequestHandler):
 	print args
 	self.set_header('Content-Type', 'application/json; charset=UTF-8')
 
+	cur_time = int(time.time())
+	print cur_time
         result = []
-        for item in list:
+        #for item in list:
+	for i, item in enumerate(list):
             i_dict = {}
             i_dict['title'] = item['title']
-            i_dict['_id'] = item['docid']
+            i_dict['_id'] = str(cur_time)+ str(i) + item['docid']
+            #i_dict['title'] = str(cur_time) + "-" + str(i) + "-" + item['docid']
+            print i_dict['_id']
             i_dict['brief'] = 'brief'
             i_dict['category'] = 'category'
             i_dict['link'] = item['url']
@@ -75,8 +85,13 @@ class ArticleHandler(tornado.web.RequestHandler):
         args=self.request.arguments
 	print "article",id
 	print args
+	mongo_client = MyMongoClient('127.0.0.1',27017, 'pages', 'toutiao')
+	real_id = id[11:]
+	data = mongo_client.find_doc(real_id)
+        for item in list(data):
+	   result={"id":id,"text":item['content']}	
+
 	self.set_header('Content-Type', 'application/json; charset=UTF-8')
-	result={"id":"111","text":"xxxfewfewfewfewfsfdsfsdffafeowfjewofnifewfewf"}	
 	self.write(json.dumps(result, ensure_ascii=False))
 
     def post(self, *args, **kwargs):
