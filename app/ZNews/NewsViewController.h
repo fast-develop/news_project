@@ -10,9 +10,14 @@
 #import "MOArticle.h"
 
 @interface NewsViewController : UIViewController
-
+/*
+ {
+ 
+ UIWebView *webView;
+ }
+ */
+@property(nonatomic, strong) UIWebView *webView;
 @property (strong, nonatomic) MOArticle *detailItem;
-
 
 @end
 
