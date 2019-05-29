@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 启动注解，注册服务，如验证框架、全局类型转换器-->
+    <mvc:annotation-driven/>
+
+    <aop:aspectj-autoproxy />
+
+    <context:component-scan base-package="org.coolsugar.log" />
+
+    <import resource="classpath:applicationContext.xml" />
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="log-provider"  />
+
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- 和本地bean一样实现服务 -->
+    <bean id="userService" class="org.coolsugar.log.impl.UserServiceImpl"/>
+    <bean id="logService" class="org.coolsugar.log.impl.LogServiceImpl"/>
+
+    <!-- 声明需要暴露的服务接口 -->
+    <!-- provider提供服务，服务的接口是interface，指向的是ref，ref对应provider实现接口类时的注解的service -->
+    <dubbo:service interface="org.coolsugar.log.service.UserService" ref="userService" />
+    <dubbo:service interface="org.coolsugar.log.service.LogService" ref="logService" />
+
+</beans>
