@@ -1,0 +1,7 @@
+#Tue Feb 12 19:31:13 PST 2019
+namespaceID=1099861630
+clusterID=CID-f0eadd07-da5d-4935-8fa4-44f3e16576d4
+cTime=0
+storageType=NAME_NODE
+blockpoolID=BP-2063303142-10.8.24.109-1550028673862
+layoutVersion=-63
