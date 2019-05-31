@@ -83,8 +83,10 @@
 
 - (void)loadArticleThumbnail:(MOArticle *)article toImageView:(UIImageView *)imageView
 {
-    NSString *thumbUrl = [NSString stringWithFormat:@"http://114.116.40.17:8080/thumb?%@",
-                          [self encodeQueryParamterPair:@"thumburl" value:article.thumb]];
+    //NSString *thumbUrl = [NSString stringWithFormat:@"http://114.116.40.17:8080/thumb?%@",
+    //                      [self encodeQueryParamterPair:@"thumburl" value:article.thumb]];
+    NSString *thumbUrl = article.thumb;
+
     [imageView setImageWithURL:[NSURL URLWithString:thumbUrl]
               placeholderImage:[UIImage imageNamed:@"thumb_placeholder"]];
 }
