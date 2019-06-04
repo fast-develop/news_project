@@ -13,6 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "DateFormatterUtils.h"
 #import "ConfigUtil.h"
+#import "HDeviceIdentifierUtils/HDeviceIdentifier.h"
 
 @implementation ContentService
 -(NSString*)getTopicQueryValue:(Topic)topic
@@ -44,6 +45,7 @@
     }
     params[@"limit"] = [@(limit) stringValue];
     params[@"output"] = @"json";
+    params[@"uuid"] = [HDeviceIdentifier deviceIdentifier];
     if(beforeDate != nil) {
         params[@"before"] = [DateFormatterUtils stringFromDate:beforeDate];
     }

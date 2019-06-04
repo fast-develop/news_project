@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6FC6C400D3FFE9929C2397F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3B122CA48CA36789EBBEF3 /* libPods.a */; };
 		F1A984E822A596F400CD0796 /* ConfigUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A984E622A596F300CD0796 /* ConfigUtil.m */; };
+		F1A984FA22A64AC200CD0796 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A984F622A64AC200CD0796 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F1A984FB22A64AC200CD0796 /* HDeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A984F722A64AC200CD0796 /* HDeviceIdentifier.m */; };
 		F62CC01D1A032FF600B10AD8 /* MOArticleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = F62CC01C1A032FF600B10AD8 /* MOArticleDetail.m */; };
 		F62CC0201A0332ED00B10AD8 /* MOArticleDetail+Dao.m in Sources */ = {isa = PBXBuildFile; fileRef = F62CC01F1A0332ED00B10AD8 /* MOArticleDetail+Dao.m */; };
 		F69B2CC01A07225800B79FDB /* NSArray+utility.m in Sources */ = {isa = PBXBuildFile; fileRef = F69B2CBF1A07225800B79FDB /* NSArray+utility.m */; };
@@ -53,6 +55,10 @@
 		F1A984E722A596F300CD0796 /* ConfigUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigUtil.h; sourceTree = "<group>"; };
 		F1A984E922A597E200CD0796 /* Settings-Debug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Settings-Debug.plist"; sourceTree = "<group>"; };
 		F1A984EB22A597FE00CD0796 /* Settings-Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Settings-Release.plist"; sourceTree = "<group>"; };
+		F1A984F622A64AC200CD0796 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = HDeviceIdentifierUtils/SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		F1A984F722A64AC200CD0796 /* HDeviceIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDeviceIdentifier.m; path = HDeviceIdentifierUtils/HDeviceIdentifier.m; sourceTree = "<group>"; };
+		F1A984F822A64AC200CD0796 /* HDeviceIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDeviceIdentifier.h; path = HDeviceIdentifierUtils/HDeviceIdentifier.h; sourceTree = "<group>"; };
+		F1A984F922A64AC200CD0796 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = HDeviceIdentifierUtils/SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		F62CC01B1A032FF600B10AD8 /* MOArticleDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOArticleDetail.h; sourceTree = "<group>"; };
 		F62CC01C1A032FF600B10AD8 /* MOArticleDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOArticleDetail.m; sourceTree = "<group>"; };
 		F62CC01E1A0332ED00B10AD8 /* MOArticleDetail+Dao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MOArticleDetail+Dao.h"; sourceTree = "<group>"; };
@@ -127,6 +133,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F1A984F322A64A6500CD0796 /* HDeviceIdentifierUtils */ = {
+			isa = PBXGroup;
+			children = (
+				F1A984F822A64AC200CD0796 /* HDeviceIdentifier.h */,
+				F1A984F722A64AC200CD0796 /* HDeviceIdentifier.m */,
+				F1A984F922A64AC200CD0796 /* SFHFKeychainUtils.h */,
+				F1A984F622A64AC200CD0796 /* SFHFKeychainUtils.m */,
+			);
+			name = HDeviceIdentifierUtils;
+			sourceTree = "<group>";
+		};
 		F6B619BE19F5325000072288 /* service */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +156,7 @@
 		F6BF1E2A1A04EA4900E7A5AD /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				F1A984F322A64A6500CD0796 /* HDeviceIdentifierUtils */,
 				F1A984E722A596F300CD0796 /* ConfigUtil.h */,
 				F1A984E622A596F300CD0796 /* ConfigUtil.m */,
 				F6BF1E2B1A04EA6C00E7A5AD /* NSString+utility.h */,
@@ -416,7 +434,9 @@
 				F6EC932F19F4D9E800AF4DEA /* main.m in Sources */,
 				F1A984E822A596F400CD0796 /* ConfigUtil.m in Sources */,
 				F6EC936819F4EB1600AF4DEA /* ContentService.m in Sources */,
+				F1A984FA22A64AC200CD0796 /* SFHFKeychainUtils.m in Sources */,
 				F6B619C119F5329B00072288 /* LibraryModel.m in Sources */,
+				F1A984FB22A64AC200CD0796 /* HDeviceIdentifier.m in Sources */,
 				F62CC0201A0332ED00B10AD8 /* MOArticleDetail+Dao.m in Sources */,
 				F62CC01D1A032FF600B10AD8 /* MOArticleDetail.m in Sources */,
 			);
