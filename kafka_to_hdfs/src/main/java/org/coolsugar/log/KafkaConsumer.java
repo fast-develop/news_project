@@ -1,19 +1,17 @@
-package org.coolsugar;
+package org.coolsugar.log;
 
 
 import kafka.consumer.Consumer;
-import kafka.consumer.ConsumerConfig;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IOUtils;
-import org.coolsugar.util.ConfigUtil;
-import org.coolsugar.util.HdfsConf;
-import org.coolsugar.util.KafkaConsumerConf;
+import org.coolsugar.log.util.ConfigUtil;
+import org.coolsugar.log.util.HdfsConf;
+import org.coolsugar.log.util.KafkaConf;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -35,7 +33,7 @@ public class KafkaConsumer extends Thread {
 
     public void run() {
 
-        consumer = Consumer.createJavaConsumerConnector(KafkaConsumerConf.getInstance().getConf());
+        consumer = Consumer.createJavaConsumerConnector(KafkaConf.getInstance().getConf());
 
         Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
         String kafkaTopic = ConfigUtil.getInstance().getProperty("kafkaTopic");

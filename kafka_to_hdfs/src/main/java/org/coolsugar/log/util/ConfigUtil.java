@@ -1,4 +1,4 @@
-package org.coolsugar.util;
+package org.coolsugar.log.util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

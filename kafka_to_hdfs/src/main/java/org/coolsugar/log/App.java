@@ -1,9 +1,9 @@
-package org.coolsugar;
+package org.coolsugar.log;
 
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.coolsugar.util.ConfigUtil;
-import org.coolsugar.util.HdfsConf;
+import org.coolsugar.log.util.ConfigUtil;
+import org.coolsugar.log.util.HdfsConf;
 
 import java.io.IOException;
 

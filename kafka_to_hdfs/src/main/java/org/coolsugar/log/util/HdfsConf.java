@@ -1,4 +1,4 @@
-package org.coolsugar.util;
+package org.coolsugar.log.util;
 
 import org.apache.hadoop.conf.Configuration;
 

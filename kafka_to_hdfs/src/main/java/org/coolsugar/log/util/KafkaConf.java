@@ -1,18 +1,18 @@
-package org.coolsugar.util;
+package org.coolsugar.log.util;
 
 import kafka.consumer.ConsumerConfig;
 
 import java.util.Properties;
 
-public class KafkaConsumerConf {
+public class KafkaConf {
 
-    private static KafkaConsumerConf ourInstance = new KafkaConsumerConf();
+    private static KafkaConf ourInstance = new KafkaConf();
     private ConsumerConfig conf = null;
 
-    private KafkaConsumerConf () {
+    private KafkaConf() {
         try {
             Properties props = new Properties();
-            props.put("zookeeper.connect", ConfigUtil.getInstance().getProperty("kafkaHost"));
+            props.put("zookeeper.connect", ConfigUtil.getInstance().getProperty("zookeeperHost"));
             props.put("group.id", ConfigUtil.getInstance().getProperty("kafkaGroup"));
 
             props.put("zookeeper.session.timeout.ms", "10000");
@@ -29,7 +29,7 @@ public class KafkaConsumerConf {
         }
     }
 
-    public static KafkaConsumerConf getInstance() {
+    public static KafkaConf getInstance() {
         return ourInstance;
     }
 
