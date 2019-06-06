@@ -36,7 +36,7 @@ public class App {
 
     public static void main( String[] args ) {
 
-        System.out.println("开始启动服务...");
+        System.out.println("begin loading data from kafka to hdfs ...");
 
 
         //创建好相应的目录
@@ -56,6 +56,6 @@ public class App {
         KafkaConsumer selfObj = new KafkaConsumer();
         selfObj.start();
 
-        System.out.println("服务启动完毕，监听执行中");
+        System.out.println("service listening ...");
     }
 }
