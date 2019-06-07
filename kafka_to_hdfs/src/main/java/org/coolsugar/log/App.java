@@ -38,22 +38,7 @@ public class App {
 
         System.out.println("begin loading data from kafka to hdfs ...");
 
-
-        //创建好相应的目录
-        try {
-            FileSystem hadoopFS = FileSystem.get(HdfsConf.getInstance().getConf());
-            //如果hdfs的对应的目录不存在，则进行创建
-            String hdfsDir = ConfigUtil.getInstance().getProperty("hdfsDir");
-            if (!hadoopFS.exists(new Path("/" + hdfsDir))) {
-                hadoopFS.mkdirs(new Path("/" + hdfsDir));
-            }
-            hadoopFS.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        KafkaConsumer selfObj = new KafkaConsumer();
+        KafkaConsumerThread selfObj = new KafkaConsumerThread();
         selfObj.start();
 
         System.out.println("service listening ...");

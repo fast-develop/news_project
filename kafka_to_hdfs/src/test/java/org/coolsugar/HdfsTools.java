@@ -19,8 +19,8 @@ public class HdfsTools {
     public static void Get() throws Exception{
         Configuration conf=new Configuration();
         FileSystem fs = FileSystem.get(new URI(ConfigUtil.getInstance().getProperty("hdfsUri")), conf);
-        InputStream in = fs.open(new Path("/b.txt"));
-        FileOutputStream out = new FileOutputStream("e.txt");
+        InputStream in = fs.open(new Path("/news_detail_log/2019-06-08.txt.txt"));
+        FileOutputStream out = new FileOutputStream("log.txt");
         IOUtils.copyBytes(in, out, conf);
     }
 
@@ -50,7 +50,7 @@ public class HdfsTools {
         Configuration conf=new Configuration();
         FileSystem fs=FileSystem.get(new URI(HDFSUri),conf,"root");
 
-        fs.mkdirs(new Path("/park02"));
+//        fs.mkdirs(new Path("/park02"));
     }
 
 
