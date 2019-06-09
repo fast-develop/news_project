@@ -24,6 +24,12 @@ public class KafkaConsumerThread extends Thread {
 
     private static FileSystem hadoopFS = null;
 
+    private String topic = "";
+
+
+    public void setTopic (String _topic) {
+        topic = _topic;
+    }
 
     public void run() {
 
@@ -31,16 +37,15 @@ public class KafkaConsumerThread extends Thread {
         KafkaConsumer<String, String> consumer =
                 new KafkaConsumer<String, String>(KafkaProperties.getInstance().getProperties());
 
-        String kafkaTopic = ConfigUtil.getInstance().getProperty("kafkaTopic");
-
         /* 消费者订阅的topic, 可同时订阅多个 */
 //        consumer.subscribe(Arrays.asList("enbook", "cnbook"));
-        consumer.subscribe(Arrays.asList(kafkaTopic));
+
+        consumer.subscribe(Collections.singletonList(topic));
 
         try {
             hadoopFS = FileSystem.get(HdfsConf.getInstance().getConf());
 
-            String topicPathName = "/" + kafkaTopic;
+            String topicPathName = "/" + topic;
             Path topicPath = new Path(topicPathName);
             if (!hadoopFS.exists(topicPath)) {
                 hadoopFS.mkdirs(topicPath);
@@ -58,7 +63,7 @@ public class KafkaConsumerThread extends Thread {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(1000);
                 for (ConsumerRecord<String, String> record : records) {
-                    System.out.printf("########### offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
+                    System.out.printf("---------- topic:" + topic + " offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
 
                     String lineData = record.value() + "\n";
                     InputStream in = new ByteArrayInputStream(lineData.getBytes("UTF-8"));

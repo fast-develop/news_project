@@ -38,8 +38,12 @@ public class App {
 
         System.out.println("begin loading data from kafka to hdfs ...");
 
-        KafkaConsumerThread selfObj = new KafkaConsumerThread();
-        selfObj.start();
+        String topics = ConfigUtil.getInstance().getProperty("kafkaTopic");
+        for(String topic :  topics.split(",")) {
+            KafkaConsumerThread th = new KafkaConsumerThread();
+            th.setTopic(topic);
+            th.start();
+        }
 
         System.out.println("service listening ...");
     }
