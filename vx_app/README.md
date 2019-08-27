@@ -1,11 +1,8 @@
-## 微信小程序--头条新闻
-
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKuangPF%2FwxAPP_toutiaoNews.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FKuangPF%2FwxAPP_toutiaoNews?ref=badge_shield)
+## 微信小程序
 
 ### 项目说明
 
-* 微信小程序: 实现一个头条新闻
+* 微信小程序: 实现一个微信新闻app
 
 ### 项目效果
 
