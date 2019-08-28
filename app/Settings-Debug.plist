@@ -5,8 +5,8 @@
 	<key>newsThumbUrl</key>
 	<string>http://114.116.40.17:8080/thumb</string>
 	<key>newsDetailUrl</key>
-	<string>http://localhost:8080/Web_Service_war_exploded/news/detail</string>
+	<string>http://152.136.128.83:8080/web_news/news/detail</string>
 	<key>newsListUrl</key>
-	<string>http://localhost:8080/Web_Service_war_exploded/news/list</string>
+	<string>http://152.136.128.83:8080/web_news/news/list</string>
 </dict>
 </plist>

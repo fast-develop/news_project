@@ -37,7 +37,7 @@
 {
     AFHTTPRequestOperationManager *manager = [self createRequestManager];
     NSString * url = [[ConfigUtil getInstance] valueOf:@"newsListUrl"];
-//    NSString *url = @"http://114.116.40.17:8080/index";
+
     //set query parameter
     NSMutableDictionary *params = [[NSMutableDictionary alloc]initWithCapacity:3];
     if(topic != All) {
@@ -69,7 +69,9 @@
     NSString * url = [[ConfigUtil getInstance] valueOf:@"newsDetailUrl"] ;
     url = [url stringByAppendingString:@"/%@"];
     url = [NSString stringWithFormat:url, article.id];
-//    NSString *url = [NSString stringWithFormat:@"http://114.116.40.17:8090/article/%@", article.id];
+    url = [url stringByAppendingString:@"/%@"];
+    url = [NSString stringWithFormat:url, [HDeviceIdentifier deviceIdentifier]];
+
     NSDictionary* params =@{@"output" : @"json"};
     [manager GET:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if([responseObject isKindOfClass:[NSDictionary class]]) {
