@@ -14,7 +14,7 @@ public class KafkaProperties {
             properties = new Properties();
             properties.put("zookeeper.connect", ConfigUtil.getInstance().getProperty("zookeeperHost"));
             /* 新版 kafka 要配此地址，定义kakfa 服务的地址，不需要将所有broker指定上 */
-            properties.put("bootstrap.servers", "152.136.128.83:9092");
+            properties.put("bootstrap.servers", ConfigUtil.getInstance().getProperty("kafkaHost"));
             /* 制定consumer group */
             properties.put("group.id", ConfigUtil.getInstance().getProperty("kafkaGroup"));
             /* 在当前没有 producer 时，新的 consumer group 可以通过打开此开关来从 offset 0 获取数据 */

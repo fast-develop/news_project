@@ -27,8 +27,12 @@ public class KafkaConsumerThread extends Thread {
     private String topic = "";
 
 
-    public void setTopic (String _topic) {
+    void setTopic (String _topic) {
         topic = _topic;
+    }
+
+    public static String today() {
+        return (new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
     }
 
     public void run() {
@@ -51,16 +55,14 @@ public class KafkaConsumerThread extends Thread {
                 hadoopFS.mkdirs(topicPath);
             }
 
-            String fileName = topicPathName + "/" +
-                    (new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())) + ".txt";
-            Path logFilePath = new Path(fileName);
-            if (!hadoopFS.exists(logFilePath)) {
-                FSDataOutputStream output = hadoopFS.create(logFilePath);
-                output.close();
-            }
-
             /* 读取数据，读取超时时间为100ms */
             while (true) {
+                Path logFilePath = new Path(topicPathName + "/" + today() + ".txt");
+                if (!hadoopFS.exists(logFilePath)) {
+                    FSDataOutputStream output = hadoopFS.create(logFilePath);
+                    output.close();
+                }
+
                 ConsumerRecords<String, String> records = consumer.poll(1000);
                 for (ConsumerRecord<String, String> record : records) {
                     System.out.printf("---------- topic:" + topic + " offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());

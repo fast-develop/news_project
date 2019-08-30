@@ -44,7 +44,7 @@ public class TestHdfs {
 
         try {
             HdfsTools.Ls();
-//            HdfsTools.Get();
+            HdfsTools.Get();
 //            HdfsTools.Delete();
 //            HdfsTools.Mkdir("/aa");
         } catch (Exception e) {
