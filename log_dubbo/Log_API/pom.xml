@@ -13,7 +13,7 @@
         <motan.version>0.3.0</motan.version>
         <dubbo.version>2.5.3</dubbo.version>
         <dubbox.version>2.8.4</dubbox.version>
-        <spring.version>4.2.4.RELEASE</spring.version>
+        <spring.version>5.2.7.RELEASE</spring.version>
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mybatis.version>3.3.1</mybatis.version>
